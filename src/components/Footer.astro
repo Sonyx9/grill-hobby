@@ -1,0 +1,23 @@
+---
+interface Props {
+  copyright?: string;
+}
+
+const { 
+  copyright = `© ${new Date().getFullYear()} Grill & Hobby. Všechna práva vyhrazena.`,
+} = Astro.props;
+---
+
+<footer class="py-8 md:py-10 bg-primary text-white/90">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-6">
+    <p class="text-sm">
+      {copyright}
+    </p>
+    <address class="text-sm text-white/80 not-italic text-center sm:text-right">
+      <strong class="text-white/90">Provozovatel:</strong><br />
+      PL PolyTrade s.r.o.<br />
+      Školská 660/3, 110 00 Praha 1<br />
+      IČ: 244 26 091
+    </address>
+  </div>
+</footer>

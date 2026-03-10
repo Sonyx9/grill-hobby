@@ -1,0 +1,70 @@
+---
+interface Props {
+  title?: string;
+  text?: string;
+  linkText?: string;
+  linkHref?: string;
+  image?: string;
+  imageAlt?: string;
+}
+
+const { 
+  title = 'Grill & Hobby',
+  text = `Neprodáváme běžné produkty.
+Vybíráme prémiové grily, které najdete pouze u nás — modely s důrazem na výkon, konstrukci a dlouhou životnost.
+
+Stejný přístup uplatňujeme i u zahradního nářadí.
+Masivní materiály, poctivé zpracování a odolnost, která vydrží roky skutečného používání.
+
+Kvalita není marketing.
+Je to standard.`,
+  linkText = 'Kontaktujte nás →',
+  linkHref = '#kontakt',
+  image = '/images/welcome-split.png',
+  imageAlt = 'Grily a zahrada – G&H',
+} = Astro.props;
+
+const paragraphs = text.split('\n\n').filter(Boolean);
+---
+
+<section id="uvod" class="py-16 md:py-24 bg-neutral-cream">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
+      <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary leading-tight">
+        {title}
+      </h2>
+      <div class="space-y-6">
+        {paragraphs.map((para) => (
+          <p class="text-primary/90 text-lg leading-relaxed whitespace-pre-line">
+            {para}
+          </p>
+        ))}
+        <a 
+          href={linkHref}
+          class="inline-flex items-center text-primary font-semibold hover:text-accent transition-colors"
+        >
+          {linkText}
+        </a>
+      </div>
+    </div>
+    <div class="rounded-lg overflow-hidden shadow-lg w-full relative">
+      <img
+        src={image}
+        alt={imageAlt}
+        class="block w-full h-auto object-cover object-center"
+        loading="lazy"
+        width="1200"
+        height="500"
+      />
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <img
+          src="/images/logo.png"
+          alt="G&H"
+          class="h-24 md:h-32 lg:h-40 w-auto opacity-95 drop-shadow-lg"
+          width="160"
+          height="64"
+        />
+      </div>
+    </div>
+  </div>
+</section>

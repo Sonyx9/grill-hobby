@@ -1,0 +1,45 @@
+---
+interface Card {
+  title: string;
+  image: string;
+  imageAlt?: string;
+}
+
+interface Props {
+  cards?: Card[];
+}
+
+const { 
+  cards = [
+    { title: 'Grily a příslušenství', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80', imageAlt: 'Grilování a barbecue' },
+    { title: 'Zahradní náčiní', image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80', imageAlt: 'Zahrada a pěstování' },
+  ]
+} = Astro.props;
+---
+
+<div class="relative -mt-8 md:-mt-12 lg:-mt-16 px-4 sm:px-6 lg:px-8 z-10">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+      {cards.map((card) => (
+        <article class="group relative overflow-hidden rounded-lg shadow-xl">
+          <a href="#co-chystame" class="block aspect-[4/3]">
+            <img
+              src={card.image}
+              alt={card.imageAlt || card.title}
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              loading="lazy"
+              width="600"
+              height="400"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent" aria-hidden />
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h3 class="text-xl font-bold text-white">
+                {card.title}
+              </h3>
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+---
+interface Props {
+  copyright: string;
+  operator: string;
+  operatorName: string;
+  operatorAddress: string;
+  operatorId: string;
+}
+
+const { copyright, operator, operatorName, operatorAddress, operatorId } = Astro.props;
+---
+
+<footer class="py-10 md:py-12 bg-primary-dark text-ivory/80">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-6">
+    <p class="font-sans text-sm">
+      © {new Date().getFullYear()} {copyright}
+    </p>
+    <address class="font-sans text-sm not-italic text-center sm:text-right">
+      <strong class="text-ivory/90">{operator}</strong><br />
+      {operatorName}<br />
+      {operatorAddress}<br />
+      {operatorId}
+    </address>
+  </div>
+</footer>

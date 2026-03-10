@@ -1,0 +1,80 @@
+---
+interface Feature {
+  number: string;
+  title: string;
+  description?: string;
+  icon: 'design' | 'speed' | 'selection' | 'premium';
+}
+
+interface Props {
+  title?: string;
+  buttonText?: string;
+  buttonHref?: string;
+  features?: Feature[];
+}
+
+const { 
+  title = 'Co chystáme',
+  buttonText = 'Náš plán',
+  buttonHref = '#kontakt',
+  features = [
+    { number: '01', title: 'čistý design', icon: 'design' as const },
+    { number: '02', title: 'dva specializované shopy', icon: 'selection' as const },
+    { number: '03', title: 'Pečlivý výběr', icon: 'speed' as const },
+    { number: '04', title: 'Prémiové zboží které jinde nenajdete', icon: 'premium' as const },
+  ]
+} = Astro.props;
+---
+
+<section id="co-chystame" class="py-16 md:py-24 bg-primary text-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12 md:mb-16">
+      <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
+        {title}
+      </h2>
+      <a 
+        href={buttonHref}
+        class="inline-flex items-center self-start md:self-center px-6 py-3 border-2 border-white/80 text-white font-semibold rounded-md hover:bg-white/10 transition-colors shrink-0"
+      >
+        {buttonText}
+      </a>
+    </div>
+    
+    <div class="grid gap-8 md:gap-12 sm:grid-cols-2 lg:grid-cols-4">
+      {features.map((feature) => (
+        <article class="group">
+          <div class="w-16 h-16 md:w-20 md:h-20 mb-6 text-white/90">
+            {feature.icon === 'design' && (
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-full h-full" aria-hidden>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+              </svg>
+            )}
+            {feature.icon === 'speed' && (
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-full h-full" aria-hidden>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            )}
+            {feature.icon === 'selection' && (
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-full h-full" aria-hidden>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+              </svg>
+            )}
+            {feature.icon === 'premium' && (
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-full h-full" aria-hidden>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+              </svg>
+            )}
+          </div>
+          <h3 class="text-xl font-bold mb-3">
+            <span class="text-accent">{feature.number}</span> {feature.title}
+          </h3>
+          {feature.description && (
+            <p class="text-white/80 leading-relaxed">
+              {feature.description}
+            </p>
+          )}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

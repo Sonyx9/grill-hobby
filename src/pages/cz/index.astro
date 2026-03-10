@@ -1,0 +1,55 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import HeroGarden from '../../components/HeroGarden.astro';
+import Curating from '../../components/Curating.astro';
+import WhatsComing from '../../components/WhatsComing.astro';
+import SisterBrand from '../../components/SisterBrand.astro';
+import ContactGarden from '../../components/ContactGarden.astro';
+import FooterGarden from '../../components/FooterGarden.astro';
+import { content, contacts } from '../../data/content';
+---
+
+<Layout
+  lang="cz"
+  title={content.cz.meta.title}
+  description={content.cz.meta.description}
+>
+  <Header
+    lang="cz"
+    nav={content.cz.header.nav}
+    sisterBrand={content.cz.header.sisterBrand}
+    sisterBrandLink={content.cz.header.sisterBrandLink}
+  />
+  <HeroGarden
+    headline={content.cz.hero.headline}
+    subheadline={content.cz.hero.subheadline}
+  />
+  <Curating
+    title={content.cz.curating.title}
+    paragraphs={[content.cz.curating.p1, content.cz.curating.p2]}
+  />
+  <WhatsComing
+    title={content.cz.whatsComing.title}
+    items={content.cz.whatsComing.items}
+  />
+  <SisterBrand
+    text={content.cz.sisterBrand.text}
+    subtext={content.cz.sisterBrand.subtext}
+    cta={content.cz.sisterBrand.cta}
+    ctaHref={content.cz.sisterBrand.ctaHref}
+  />
+  <ContactGarden
+    title={content.cz.contact.title}
+    text={content.cz.contact.text}
+    email={contacts.email}
+    phone={contacts.phone}
+  />
+  <FooterGarden
+    copyright={content.cz.footer.copyright}
+    operator={content.cz.footer.operator}
+    operatorName={content.cz.footer.operatorName}
+    operatorAddress={content.cz.footer.operatorAddress}
+    operatorId={content.cz.footer.operatorId}
+  />
+</Layout>

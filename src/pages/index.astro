@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import HeroGarden from '../components/HeroGarden.astro';
+import Curating from '../components/Curating.astro';
+import WhatsComing from '../components/WhatsComing.astro';
+import SisterBrand from '../components/SisterBrand.astro';
+import ContactGarden from '../components/ContactGarden.astro';
+import FooterGarden from '../components/FooterGarden.astro';
+import { content, contacts } from '../data/content';
+---
+
+<Layout
+  lang="en"
+  title={content.en.meta.title}
+  description={content.en.meta.description}
+>
+  <Header
+    lang="en"
+    nav={content.en.header.nav}
+    sisterBrand={content.en.header.sisterBrand}
+    sisterBrandLink={content.en.header.sisterBrandLink}
+    sisterBrandHref={content.en.header.sisterBrandHref}
+  />
+  <HeroGarden
+    headline={content.en.hero.headline}
+    subheadline={content.en.hero.subheadline}
+  />
+  <Curating
+    title={content.en.curating.title}
+    paragraphs={[content.en.curating.p1, content.en.curating.p2]}
+    images={content.en.curating.images}
+  />
+  <WhatsComing
+    title={content.en.whatsComing.title}
+    items={content.en.whatsComing.items}
+  />
+  <SisterBrand
+    text={content.en.sisterBrand.text}
+    subtext={content.en.sisterBrand.subtext}
+    cta={content.en.sisterBrand.cta}
+    ctaHref={content.en.sisterBrand.ctaHref}
+  />
+  <ContactGarden
+    title={content.en.contact.title}
+    text={content.en.contact.text}
+    email={contacts.email}
+    phone={contacts.phone}
+  />
+  <FooterGarden
+    copyright={content.en.footer.copyright}
+    operator={content.en.footer.operator}
+    operatorName={content.en.footer.operatorName}
+    operatorAddress={content.en.footer.operatorAddress}
+    operatorId={content.en.footer.operatorId}
+  />
+</Layout>

@@ -1,0 +1,46 @@
+---
+interface Props {
+  title: string;
+  paragraphs: string[];
+  images?: { src: string; alt: string }[];
+}
+
+const { title, paragraphs, images = [
+  { src: '/images/gallery-garden-trowel.png', alt: 'Zahradní sázecí lopatka' },
+  { src: '/images/gallery-shears-gloves.png', alt: 'Zahradní nůžky a rukavice' },
+  { src: '/images/gallery-rake-fork.png', alt: 'Hrábě a rýč' },
+  { src: '/images/gallery-watering-can.png', alt: 'Zalévací konev' },
+  { src: '/images/gallery-hands-tools.png', alt: 'Ruce a zahradní nářadí' },
+  { src: '/images/gallery-tools-collection.png', alt: 'Kolekce zahradního nářadí' },
+] } = Astro.props;
+---
+
+<section id="curating" class="py-24 md:py-32 bg-ivory">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-primary leading-tight mb-4">
+      {title}
+    </h2>
+    <div class="h-px w-16 bg-accent mb-10 md:mb-12" aria-hidden />
+    <div class="grid md:grid-cols-2 gap-10 lg:gap-16">
+      {paragraphs.map((p) => (
+        <p class="font-sans text-primary/90 text-lg leading-relaxed">
+          {p}
+        </p>
+      ))}
+    </div>
+    <div class="mt-24 md:mt-32 grid grid-cols-3 grid-rows-2 gap-2 md:gap-3">
+      {images.slice(0, 6).map((img) => (
+        <div class="aspect-[4/3] rounded-lg overflow-hidden shadow-md">
+          <img
+            src={img.src}
+            alt={img.alt}
+            class="w-full h-full object-cover"
+            loading="lazy"
+            width="400"
+            height="300"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
