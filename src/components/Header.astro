@@ -10,10 +10,10 @@ interface Props {
   logoSrc?: string;
 }
 
-const { lang, nav, sisterBrand, sisterBrandLink, sisterBrandHref = 'https://gardenandhobby.com', logoSrc = '/images/logo.png' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const { lang, nav, sisterBrand, sisterBrandLink, sisterBrandHref = 'https://gardenandhobby.com', logoSrc = `${base}images/logo.png` } = Astro.props;
 
 const navIds = ['curating', 'whats-coming', 'contact'];
-const base = import.meta.env.BASE_URL;
 const otherLang = lang === 'en' ? 'cz' : 'en';
 const otherHref = lang === 'en' ? `${base}cz/` : base;
 ---

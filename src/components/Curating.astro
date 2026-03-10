@@ -29,10 +29,13 @@ const { title, paragraphs, images = [
       ))}
     </div>
     <div class="mt-24 md:mt-32 grid grid-cols-3 grid-rows-2 gap-2 md:gap-3">
-      {images.slice(0, 6).map((img) => (
+      {images.slice(0, 6).map((img) => {
+        const base = import.meta.env.BASE_URL;
+        const src = img.src.startsWith('/') ? base + img.src.slice(1) : base + img.src;
+        return (
         <div class="aspect-[4/3] rounded-lg overflow-hidden shadow-md">
           <img
-            src={img.src}
+            src={src}
             alt={img.alt}
             class="w-full h-full object-cover"
             loading="lazy"
@@ -40,7 +43,7 @@ const { title, paragraphs, images = [
             height="300"
           />
         </div>
-      ))}
+      );})}
     </div>
   </div>
 </section>

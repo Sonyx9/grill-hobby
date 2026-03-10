@@ -9,11 +9,12 @@ interface Props {
   image?: string;
 }
 
+const base = import.meta.env.BASE_URL;
 const { 
   lang = 'en',
   title,
   description,
-  image = '/images/hero-grill.jpg',
+  image = `${base}images/hero-grill.jpg`,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://example.com');
@@ -26,7 +27,7 @@ const ogLocale = lang === 'cz' ? 'cs_CZ' : 'en_GB';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -38,7 +39,7 @@ const ogLocale = lang === 'cz' ? 'cs_CZ' : 'en_GB';
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.site || 'https://example.com')} />
+    <meta property="og:image" content={new URL(image, Astro.site || 'https://example.com').toString()} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:locale" content={ogLocale} />
   </head>

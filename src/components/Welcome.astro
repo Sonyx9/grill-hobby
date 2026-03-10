@@ -20,7 +20,7 @@ Kvalita není marketing.
 Je to standard.`,
   linkText = 'Kontaktujte nás →',
   linkHref = '#kontakt',
-  image = '/images/welcome-split.png',
+  image = `${import.meta.env.BASE_URL}images/welcome-split.png`,
   imageAlt = 'Grily a zahrada – G&H',
 } = Astro.props;
 
@@ -58,7 +58,7 @@ const paragraphs = text.split('\n\n').filter(Boolean);
       />
       <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
         <img
-          src="/images/logo.png"
+          src={`${import.meta.env.BASE_URL}images/logo.png`}
           alt="G&H"
           class="h-24 md:h-32 lg:h-40 w-auto opacity-95 drop-shadow-lg"
           width="160"

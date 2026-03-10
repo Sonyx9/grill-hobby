@@ -9,7 +9,7 @@ const { headline, subheadline } = Astro.props;
 
 <section class="relative min-h-[85vh] flex flex-col justify-end pb-16 md:pb-24">
   <img
-    src="/images/hero-grill.jpg"
+    src={`${import.meta.env.BASE_URL}images/hero-grill.jpg`}
     alt=""
     class="absolute inset-0 w-full h-full object-cover object-center -z-10"
     loading="eager"
