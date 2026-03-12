@@ -43,7 +43,7 @@ URL stránky: `https://<username>.github.io/grill-hobby/` (např. `https://sonyx
 - **Obrázky** – přidejte do `public/images/`:
   - `hero-grill.jpg` – hlavní vizuál hero sekce
   - `gallery-grill-1.jpg` až `gallery-grill-6.jpg` – galerie v sekci Curating (nebo upravte cesty v `src/data/content.ts`)
-- **Meta / OG** – v `astro.config.mjs` nastavte `site` na skutečnou doménu
+- **Meta / OG** – v `astro.config.mjs` je `site: 'https://grillandhobby.com'` a `base: '/'` pro vlastní doménu (cesty z kořene). Při jiné doméně upravte `site`.
 - **Favicon** – nahraďte `public/favicon.svg` vlastním logem
 
 ## Struktura
