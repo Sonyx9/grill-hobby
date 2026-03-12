@@ -21,13 +21,21 @@ Výstup je ve složce `dist/`.
 
 ## GitHub Pages
 
-1. Nahrajte projekt do vlastního repozitáře na GitHubu (např. `Grill-and-Hobby`).
-2. V repozitáři: **Settings → Pages → Build and deployment → Source:** zvolte **GitHub Actions**.
-3. Po každém push na větev `main` se spustí workflow `.github/workflows/pages.yml`, stránka se zbuildí a nasadí.
-4. Stránka bude dostupná na: `https://<username>.github.io/<název-repo>/`  
-   (např. `https://lukas.github.io/Grill-and-Hobby/`).
+Máte **dvě možnosti** nasazení. Pokud se stránka po pushi nemění nebo se nenačítají styly, použijte **možnost B**.
 
-Base URL i `site` pro OG odkazy se v CI nastaví automaticky podle názvu repozitáře.
+### Možnost A – zdroj „GitHub Actions“
+
+1. **Settings → Pages → Build and deployment → Source:** zvolte **GitHub Actions**.
+2. Po pushi na `main` se spustí workflow *Deploy to GitHub Pages* a stránka se nasadí.
+
+### Možnost B – větev gh-pages (doporučeno, pokud A nefunguje)
+
+1. Po pushi na `main` se spustí workflow **Deploy to gh-pages branch** – ten zbuildí stránku a nahraje ji na větev `gh-pages`.
+2. V repozitáři: **Settings → Pages → Build and deployment → Source:** zvolte **Deploy from a branch**.
+3. **Branch:** vyberte **gh-pages**, **Folder:** ponechejte **/ (root)**.
+4. Uložte. Stránka se nasadí z větve `gh-pages` a měla by se zobrazovat včetně stylů.
+
+URL stránky: `https://<username>.github.io/grill-hobby/` (např. `https://sonyx9.github.io/grill-hobby/`).
 
 ## Konfigurace
 
