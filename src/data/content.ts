@@ -115,5 +115,5 @@ export const content = {
 
 export const contacts = {
   email: 'curator@grillandhobby.com',
-  phone: '+420 735 306 070',
+  phone: '+420 735 30 60 70',
 };
