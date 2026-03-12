@@ -33,6 +33,14 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Ensure index.html exists (required for root URL)
+        run: |
+          if [ ! -f dist/index.html ]; then
+            echo "::error::Missing dist/index.html - GitHub Pages needs it for root URL"
+            exit 1
+          fi
+          echo "dist/index.html OK"
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
