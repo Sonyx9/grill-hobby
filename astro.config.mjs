@@ -6,4 +6,7 @@ export default defineConfig({
   site: 'https://sonyx9.github.io/grill-hobby',
   base: '/grill-hobby/',
   output: 'static',
+  build: {
+    assets: 'assets',
+  },
 });
